@@ -1,0 +1,21 @@
+openapi: 3.0.0
+info:
+  title: Bairng API
+  description: API for game engine playing Bang the Dice Game.
+  version: "0.1.0"
+paths:
+  /api/test:
+    get:
+      summary: "Hello World"
+      description: "test endpoint"
+      operationId: "api.test"
+      responses: 
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  content: 
+                    type: string

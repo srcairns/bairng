@@ -1,0 +1,22 @@
+To make Bairng operational, we'll need:
+
+0. initial commit: hello world appserver, with a skeleton of how the app intends to progress.
+1. login manager: means to CRUD a user (Create only by logged in superuser), and log into the server. Decorators to direct users to login on game specific calls.
+2. testing suite: eg: nose tests to document a use case for the above, and test drive further development
+3. lobby system: interface for creating/sitting at/starting a table, and skeleton for host to set game options.
+4. basic game: the ability to roll dice, use dice, and a FFA game to be completable. No roles, no chars.
+4a. shots, beers
+4b. arrows, dynamite, gatlings
+5. update system: a log of game actions and results, and an update call that returns a diff, appended with the currently awaited action
+6. look around: ability to see the game state
+7. roles: game rules for having a Sheriff; checks for wins on death(s). Hidden role system. Ability to choose from Lobby, default role config.
+8. basic client: bare bones text-based adventure style representation of the game state. Probably html.
+8a. client that can log in, change password, interact with a lobby.
+8b. client that can play the game
+9. Characters: base only. Provide options when abilities can be used. Special care to respect Arrow abilities.
+
+Nice to Haves:
+10. pythonanywhere, or similar means of playing online.
+11. Request further roles from MT
+12. Memes
+13. Sense of satisfaction
