@@ -1,6 +1,6 @@
-from base import Base
-from flask_sqlalchemy import SQLAlchemy    
-db = SQLAlchemy()
+from models import Base
+from flask_sqlalchemy import SQLAlchemy 
+from models.db import db
 
 class Game(Base):
     __tablename__ = 'game'
@@ -8,4 +8,4 @@ class Game(Base):
     game_name = db.Column(db.String(80), unique=True, nullable=False)
 
     def __repr__(self):
-        return '<Game %r (id:$d)>' % self.game_name, game_id
+        return '<Game %r (id:$d)>' % self.game_name, self.game_id

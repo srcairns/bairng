@@ -1,11 +1,10 @@
 from flask import Flask, Blueprint
 import game_engine
-from werkzeug.security import check_password_hash
-from db import user
+from models import user
+from flask_login import login_required
+#from models.db import db
 
-#todo: connexion and swagger a restful API
-
-api = Blueprint('simple_page', __name__)
+api = Blueprint('api', __name__)
 
 @api.route('/', defaults={'page': 'test'})
 
@@ -13,6 +12,8 @@ api = Blueprint('simple_page', __name__)
 def test():
     return {'content': 'Hello, World!',}
 
-@api.route('/create_user')
-def create_user():
-    return user.create_user()
+
+@api.route('/test_login')
+@login_required
+def test_login():
+    return {'content': 'Hello, Specific Person!',}

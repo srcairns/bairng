@@ -19,3 +19,33 @@ paths:
                 properties:
                   content: 
                     type: string
+  /api/test_login:
+    get:
+      summary: "Hello Specific Person"
+      description: "test endpoint for logins"
+      operationId: "api.test_login"
+      responses: 
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  content: 
+                    type: string
+  /auth/create_user:
+    post:
+      summary: "Create User"
+      description: "Superuser only endpoint for POSTing new users"
+      operationId: "auth.create_user"
+      responses: 
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  content: 
+                    type: application/json

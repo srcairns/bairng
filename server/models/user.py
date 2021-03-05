@@ -1,7 +1,8 @@
-from base import Base
+from models import Base
 from werkzeug.security import generate_password_hash
 from flask_sqlalchemy import SQLAlchemy    
-db = SQLAlchemy()
+from models.db import db
+import json
 
 USERNAME_SIZE = 64
 PASS_SIZE = 100
@@ -17,7 +18,7 @@ class User(Base):
     _password_hash = db.Column(db.String(PASS_SIZE))
 
     def __repr__(self):
-        return '<User {}>'.format(self.username)
+        return json.dumps({'id' : self.user_id, 'username' : self.username,})
     
     def is_authenticated(self):
         return self.authenticated
@@ -33,11 +34,13 @@ class User(Base):
 
 
 
-def create_user(**user_details):
+def create_user(user_details):
     user_details_dict = user_details
     if 'password' in user_details_dict.keys():
         user_details_dict['password_hash'] = generate_password_hash(user_details_dict['password'])
     new_user = User(email = user_details_dict['email'], username = user_details_dict['username'], _password_hash = user_details_dict['password_hash'])
+    db.session.add(new_user)
+    db.session.flush()
     return new_user
 
 #@login_manager.user_loader

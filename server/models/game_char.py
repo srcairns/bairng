@@ -1,12 +1,12 @@
 import utils
-from base import Base
-from flask_sqlalchemy import SQLAlchemy    
-db = SQLAlchemy()
+from models import Base
+from models.db import db
+from flask_sqlalchemy import SQLAlchemy
 
 TRAITS_BLURB_LENGTH = 1024
 
-class Char(Base):
-    __tablename__ = 'char'
+class GameChar(Base):
+    __tablename__ = 'game_char'
     char_id = db.Column(db.Integer, primary_key=True)
     char_name = db.Column(db.String(80), unique=True, nullable=False)
     life = db.Column(db.Integer, nullable=True)

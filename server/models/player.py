@@ -1,6 +1,6 @@
-from base import Base
-from flask_sqlalchemy import SQLAlchemy    
-db = SQLAlchemy()
+from models import Base, utils
+from flask_sqlalchemy import SQLAlchemy
+from models.db import db
 
 PLAYER_NAME_SIZE = 80
 
@@ -9,8 +9,8 @@ class Player(Base):
     player_id = db.Column(db.Integer, primary_key=True)
     player_name = db.Column(db.String(PLAYER_NAME_SIZE), unique=True, nullable=False)
     user_id = db.Column(db.Integer, nullable=True)
-    game_id = db.Column(db.Integer, foreign_key('game.game_id')=True)
-    char_id = db.Column(db.Integer, foreign_key('char.char_id')=True, nullable=True)
+    game_id = db.Column(db.Integer, db.ForeignKey('game.game_id'), nullable=True)
+    char_id = db.Column(db.Integer, db.ForeignKey('game_char.char_id'), nullable=True)
     status = db.Column(db.String(1), nullable=False, default='A')
     faction = db.Column(db.String(1), nullable=True)
     current_life = db.Column(db.Integer, nullable=False)
